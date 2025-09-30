@@ -16,6 +16,7 @@ export class McpService implements OnModuleInit {
   }
 
   async onModuleInit() {
+    console.error('WeatherService está:', this.weatherService ? 'OK' : 'undefined');
     await this.setupTools();
     await this.connectServer();
   }
@@ -44,7 +45,7 @@ export class McpService implements OnModuleInit {
             content: [
               {
                 type: 'text',
-                text: `Error: ${error.message}`
+                text: `Error - test: ${error.message}`
               }
             ]
           };
@@ -56,6 +57,6 @@ export class McpService implements OnModuleInit {
   private async connectServer() {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
-    console.log('MCP Server connected successfully');
+    // console.log('MCP Server connected successfully');
   }
 }
